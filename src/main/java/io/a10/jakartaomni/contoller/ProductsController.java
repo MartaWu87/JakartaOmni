@@ -2,6 +2,7 @@ package io.a10.jakartaomni.contoller;
 
 import io.a10.jakartaomni.entity.Category;
 import io.a10.jakartaomni.entity.Products;
+import io.a10.jakartaomni.entity.Products_;
 import jakarta.ejb.Stateless;
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.PersistenceContext;
@@ -45,33 +46,16 @@ public class ProductsController {
     }
 
 
-//    public List<Products> sortByCategory(Long category_id) {
-//        CriteriaBuilder criteriaBuilder = entityManager.getCriteriaBuilder();
-//        CriteriaQuery<Products> criteriaQuery = criteriaBuilder.createQuery(Products.class);
-//        Root<Products> products = criteriaQuery.from(Products.class);
-//        products.fetch(Products_.category);
-//        criteriaQuery.select(products);
-//        Predicate predicate = criteriaBuilder.equal(products.get(Products_.category), category_id);
-//        criteriaQuery.where(predicate);
-//        TypedQuery<Products> query = entityManager.createQuery(criteriaQuery);
-//        List<Products> productsList = query.getResultList();
-//        return productsList;
-//
-//    }
-
-    public Products getProducts() {
-        return products;
-    }
-
-    public void setProducts(Products products) {
-        this.products = products;
-    }
-
-    public Category getCategory() {
-        return category;
-    }
-
-    public void setCategory(Category category) {
-        this.category = category;
+    public List<Products> sortByCategory(Long category_id) {
+        CriteriaBuilder criteriaBuilder = entityManager.getCriteriaBuilder();
+        CriteriaQuery<Products> criteriaQuery = criteriaBuilder.createQuery(Products.class);
+        Root<Products> products = criteriaQuery.from(Products.class);
+        products.fetch(Products_.category);
+        criteriaQuery.select(products);
+        Predicate predicate = criteriaBuilder.equal(products.get(Products_.category), category_id);
+        criteriaQuery.where(predicate);
+        TypedQuery<Products> query = entityManager.createQuery(criteriaQuery);
+        List<Products> productsList = query.getResultList();
+        return productsList;
     }
 }

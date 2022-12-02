@@ -21,7 +21,7 @@ public class Category {
     @Column(name = "NAME")
     private String name;
 
-    @OneToMany(mappedBy = "category", fetch = FetchType.LAZY, cascade = CascadeType.REMOVE)  //, cascade = CascadeType.ALL, fetch = FetchType.EAGER, fetch = FetchType.LAZY, )
+    @OneToMany(mappedBy = "category", fetch = FetchType.LAZY, cascade = CascadeType.ALL)  //, cascade = CascadeType.ALL, fetch = FetchType.EAGER, fetch = FetchType.LAZY, )
     private List<Products> products = new ArrayList<>();
 
     @Override

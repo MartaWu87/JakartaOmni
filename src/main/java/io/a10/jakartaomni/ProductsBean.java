@@ -74,9 +74,9 @@ public class ProductsBean implements Serializable {
         return "index?faces-redirect=true";
     }
 
-//    public void sortByCategory(Long category_id) {
-//        this.productsList = productsController.sortByCategory(category_id);
-//    }
+    public void sortByCategory(Long category_id) {
+        this.productsList = productsController.sortByCategory(category_id);
+    }
 
     public Logger getLogger() {
         return logger;
